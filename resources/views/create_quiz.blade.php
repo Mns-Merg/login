@@ -1,7 +1,7 @@
 <html>
     <body>
         Adminara ole paiktaras
-        <a href="/quizs">Δημιουργία quiz</a>
+        <a href="/admin">Επιστοφή στο admin</a>
 
     </body>
 </html>

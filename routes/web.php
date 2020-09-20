@@ -32,6 +32,13 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
+Route::get('/create_quiz', function () {
+    
+    return view('create_quiz');
+});
+
 Route::get('/peon', function () {
     return view('peon');
 });
+
+Route::resource('quizs', 'QuizController');
