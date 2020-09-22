@@ -42,3 +42,12 @@ Route::get('/peon', function () {
 });
 
 Route::resource('quizs', 'QuizController');
+
+Route::get('/class', function () {
+    return view('class');
+});
+
+
+Route::get('session/get','SessionController@accessSessionData');
+Route::get('session/set','SessionController@storeSessionData');
+Route::get('session/remove','SessionController@deleteSessionData');
