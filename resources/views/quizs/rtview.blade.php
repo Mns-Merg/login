@@ -13,8 +13,8 @@
         </div>
         <br /> 
         @endif
-        <form method="post" action="{{ route('quizs.update', $quiz->id) }}">
-            @method('PATCH') 
+        <form method="get" action="{{ url('rt_quiz_destroy')}}">
+             <!-- @method('PATCH') -->
             @csrf
             <div class="form-group">
                 <label for="question">Question:</label>
@@ -41,7 +41,7 @@
                 <input type="text" class="form-control" name="answer_D" value={{ $quiz->correct_answer }} />
             </div>
             
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">End Vote</button>
         </form>
     </div>
 </div>

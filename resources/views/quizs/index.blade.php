@@ -29,6 +29,9 @@
             <td>
                 <a href="{{ route('quizs.edit',$quiz->id)}}" class="btn btn-primary">Edit</a>
             </td>
+             <td>
+                <a href="{{ url('rt_quiz/'.$quiz->id)}}" class="btn btn-primary">RT-Quiz</a>
+            </td> 
             <td>
                 <form action="{{ route('quizs.destroy', $quiz->id)}}" method="post">
                   @csrf

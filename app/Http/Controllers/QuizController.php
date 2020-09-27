@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Quiz;
+use App\RTquiz;
 
 class QuizController extends Controller
 {
@@ -20,6 +21,16 @@ class QuizController extends Controller
         return view('quizs.index', compact('quizs'));
     }
 
+    public function rt_quiz_destroy()
+
+    {
+        $rtquiz = Rtquiz::where('class', session()->get('class'));
+        $rtquiz->delete();
+        $quizs = Quiz::all();
+        return view('quizs.index', compact('quizs'));
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,6 +40,23 @@ class QuizController extends Controller
     {
         //
         return view ('quizs.create');
+    }
+
+    public function rt_quiz($id)
+    {
+        //
+        $quiz = Quiz::find($id);
+        $rtquiz = new Rtquiz ([
+            'question' => $quiz->question,
+            'answer_A' => $quiz->answer_A,
+            'answer_B' => $quiz->answer_B,
+            'answer_C' => $quiz->answer_C,
+            'answer_D' => $quiz->answer_D,
+            'correct_answer' => $quiz->correct_answer,
+            'class' => session()->get('class')
+            ]);
+        $rtquiz->save();
+        return view ('quizs.rtview', compact('quiz'));
     }
 
     /**
@@ -45,7 +73,8 @@ class QuizController extends Controller
         'answer_A' => $request->get('answer_A'),
         'answer_B' => $request->get('answer_B'),
         'answer_C' => $request->get('answer_C'),
-        'answer_D' => $request->get('answer_D')
+        'answer_D' => $request->get('answer_D'),
+        'correct_answer' => $request->get('correct_answer')
         ]);
         $quiz->save();
         return redirect('/quizs')->with('success', 'Quiz Added');
@@ -86,7 +115,7 @@ class QuizController extends Controller
     {
         //
         $quiz = Quiz::find($id);
-        $quiz->question =  $request->get('question');
+        $quiz->question = $request->get('question');
         $quiz->answer_A = $request->get('answer_A');
         $quiz->answer_B = $request->get('answer_B');
         $quiz->answer_C = $request->get('answer_C');

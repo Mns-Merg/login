@@ -18,6 +18,11 @@ class SessionController extends Controller
         $request->session()->put('class',$request->get('class'));
         return redirect('/admin');
      }
+
+     public function storeSessionData2(Request $request) {
+      $request->session()->put('class',$request->get('class'));
+      return redirect('/home');
+   }
      public function deleteSessionData(Request $request) {
         $request->session()->forget('my_name');
         echo "Data has been removed from session.";

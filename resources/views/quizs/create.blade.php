@@ -34,6 +34,10 @@
           <div class="form-group">
               <label for="answer_A">Answer D:</label>
               <input type="text" class="form-control" name="answer_D"/>
+          </div>  
+          <div class="form-group">
+              <label for="answer_A">Correct Answer:</label>
+              <input type="text" class="form-control" name="correct_answer"/>
           </div>                
           <button type="submit" class="btn btn-primary">Add quiz</button>
       </form>
