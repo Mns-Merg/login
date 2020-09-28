@@ -18,7 +18,7 @@
             @csrf
             <div class="form-group">
                 <label for="question">Question:</label>
-                <input type="text" class="form-control" name="question" value={{ $quiz->question }} />
+                <input type="text" class="form-control" name="question" value= '{{$quiz->question}}' />
             </div>
             <div class="form-group">
                 <label for="last_name">Answer</label>

@@ -15,7 +15,7 @@ class CreateRtquizzesTable extends Migration
     {
         Schema::create('rtquizzes', function (Blueprint $table) {
             $table->id();
-            $table->string('question');
+            $table->text('question');
             $table->string('answer_A');
             $table->string('answer_B');
             $table->string('answer_C');

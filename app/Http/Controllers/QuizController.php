@@ -25,9 +25,12 @@ class QuizController extends Controller
 
     {
         $rtquiz = Rtquiz::where('class', session()->get('class'));
+        
         $rtquiz->delete();
-        $quizs = Quiz::all();
-        return view('quizs.index', compact('quizs'));
+
+        
+         $quizs = Quiz::all();
+         return view('quizs.index', compact('quizs'));
         
     }
 

@@ -18,6 +18,7 @@ class CreateVotesTable extends Migration
             $table->string('question');
             $table->string('answer');
             $table->string('class');
+            $table->string('correct_answer');
             $table->timestamps();
         });
     }

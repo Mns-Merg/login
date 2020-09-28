@@ -26,10 +26,17 @@ class VoteController extends Controller
 
         $vote = new Vote;
 
+        $class1= session()->get('class');
+
+        $quiz1 = Rtquiz::where('class', $class1)->get()->first();
+
+
+
         $vote = new Vote ([
             'question' => $request->get('question'),
             'answer' => $request->get('answer'),
             'class' => session()->get('class'),
+            'correct_answer' => $quiz1->correct_answer
             
             ]);
             $vote->save();
