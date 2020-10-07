@@ -48,7 +48,18 @@ class QuizController extends Controller
         $votes_b = Vote::where('class', session()->get('class'))->where('question',$q)->where('answer','b')->count();
         $votes_c = Vote::where('class', session()->get('class'))->where('question',$q)->where('answer','c')->count();
         $votes_d = Vote::where('class', session()->get('class'))->where('question',$q)->where('answer','d')->count();
-        $votes = array($votes_a, $votes_b, $votes_c,$votes_d,$cor_answer);
+        $sum = $votes_a+$votes_b+$votes_c+$votes_d;
+        if($cor_answer == 'a'){
+            $cor_votes = $votes_a;
+        }else if($cor_answer == 'b'){
+            $cor_votes = $votes_b;
+        }else if($cor_answer == 'c'){
+            $cor_votes = $votes_c;
+        }else if($cor_answer == 'd'){
+            $cor_votes = $votes_d;
+        }
+        $threshold = 0.5*$sum;
+        $votes = array($votes_a, $votes_b, $votes_c,$votes_d,$cor_answer,$sum,$cor_votes,$threshold);
         return view('results', compact('votes'));
         
     }
