@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Quiz;
 use App\RTquiz;
+use App\Vote;
 
 class QuizController extends Controller
 {
@@ -24,13 +25,31 @@ class QuizController extends Controller
     public function rt_quiz_destroy()
 
     {
-        $rtquiz = Rtquiz::where('class', session()->get('class'));
+        // $rtquiz = Rtquiz::where('class', session()->get('class'));
         
-        $rtquiz->delete();
+        
+         
+
+      
+        
+
+
 
         
-         $quizs = Quiz::all();
-         return view('quizs.index', compact('quizs'));
+        //  $quizs = Quiz::all();
+        //  return view('quizs.index', compact('quizs'));
+
+        $rtquiz = Rtquiz::where('class', session()->get('class'))->first();
+        $q = $rtquiz->question;
+        $cor_answer = $rtquiz->correct_answer;
+        $rtquiz->delete();
+
+        $votes_a = Vote::where('class', session()->get('class'))->where('question',$q)->where('answer','a')->count();
+        $votes_b = Vote::where('class', session()->get('class'))->where('question',$q)->where('answer','b')->count();
+        $votes_c = Vote::where('class', session()->get('class'))->where('question',$q)->where('answer','c')->count();
+        $votes_d = Vote::where('class', session()->get('class'))->where('question',$q)->where('answer','d')->count();
+        $votes = array($votes_a, $votes_b, $votes_c,$votes_d,$cor_answer);
+        return view('results', compact('votes'));
         
     }
 

@@ -1,17 +1,10 @@
 @extends('layouts.admin1')
 
 @section('content')
-@section('content')
+      
+
+
 <div class="container">
-<div class="col-sm-12">
-  @if(session()->get('success'))
-    <div class="alert alert-success">
-      {{ session()->get('success') }}  
-    </div>
-  @endif     
-
-
-
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -24,10 +17,13 @@
                         </div>
                     @endif
 
-                    In order to use the application first you need to create a class and then create a RT-Quiz.<br>
-
+                    The correct Answer is : {{$votes[4] }}<br>
+                    Total Votes for A: {{$votes[0]}}<br>
+                    Total Votes for B: {{$votes[1]}}<br>
+                    Total Votes for C: {{$votes[2]}}<br>
+                    Total Votes for D: {{$votes[3]}}<br>
                     <a href="/quizs">Manage Quizs</a><br>
-                    <a href="/class">Create a class</a><br>
+
                     
 
 

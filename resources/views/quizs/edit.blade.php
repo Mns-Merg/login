@@ -1,5 +1,10 @@
-@extends('base') 
-@section('main')
+@extends('layouts.admin1')
+
+@section('content')
+      
+
+
+<div class="container">
 <div class="row">
     <div class="col-sm-8 offset-sm-2">
         <h1 class="display-3">Update a quiz</h1>
@@ -18,7 +23,7 @@
             @csrf
             <div class="form-group">
                 <label for="question">Question:</label>
-                <input type="text" class="form-control" name="question" value={{ $quiz->question }} />
+                <input type="text" class="form-control" name="question" value= '{{$quiz->question}}' />
             </div>
             <div class="form-group">
                 <label for="last_name">Answer A:</label>
@@ -38,11 +43,12 @@
             </div>
             <div class="form-group">
                 <label for="country">Correct Answer :</label>
-                <input type="text" class="form-control" name="answer_D" value={{ $quiz->correct_answer }} />
+                <input type="text" class="form-control" name="correct_answer" value={{ $quiz->correct_answer }} />
             </div>
             
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
+</div>
 </div>
 @endsection

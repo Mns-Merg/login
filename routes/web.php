@@ -15,13 +15,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-
-    if(Auth::check()){
-        return "the user is logged in";
-    }
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
@@ -30,35 +24,42 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', function () {
     
     return view('admin');
-});
+})->middleware('role:1');
 
 Route::get('/create_quiz', function () {
     
-    return view('create_quiz');
+    return view('create_quiz')->middleware('role:1');
 });
 
-Route::get('/peon', function () {
-    return view('peon');
-});
 
-Route::resource('quizs', 'QuizController');
+
+Route::resource('quizs', 'QuizController')->middleware('role:1');
 
 Route::get('/class', function () {
     return view('class');
 });
+
+Route::get('/results', function () {
+    return view('results');
+})->middleware('role:1');
 
 Route::get('/class_join', function(){
     return view('class_join');
 });
 
 Route::get('/vote', 'VoteController@vote');
+
 Route::get('/vote_send', 'VoteController@vote_send');
 
 
-Route::get('rt_quiz/{id}','QuizController@rt_quiz');
-Route::get('rt_quiz_destroy', 'QuizController@rt_quiz_destroy');
+Route::get('rt_quiz/{id}','QuizController@rt_quiz')->middleware('role:1');
+
+Route::get('rt_quiz_destroy', 'QuizController@rt_quiz_destroy')->middleware('role:1');
 
 Route::get('session/get','SessionController@accessSessionData');
+
 Route::get('session/set','SessionController@storeSessionData');
+
 Route::get('session/set2','SessionController@storeSessionData2');
+
 Route::get('session/remove','SessionController@deleteSessionData');

@@ -31,10 +31,8 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user) {
         if ($user->role== 1) {
             return redirect('/admin');
-        } else if ($user->role== 2) {
-            return redirect('/peon');
-        } else {
-            return redirect('/blog');
+        }  else {
+            return redirect('/home');
         }
    }
     protected $redirectTo = RouteServiceProvider::HOME;

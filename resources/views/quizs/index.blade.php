@@ -1,5 +1,6 @@
-@extends('base')
-@section('main')
+@extends('layouts.admin1')
+
+@section('content')
 <div class="col-sm-12">
   @if(session()->get('success'))
     <div class="alert alert-success">
@@ -7,6 +8,8 @@
     </div>
   @endif
 </div>
+
+<div class="container">
 <div class="row">
 <div class="col-sm-12">
     <h1 class="display-3">Quizs</h1>    
@@ -44,5 +47,6 @@
     </tbody>
   </table>
 <div>
+</div>
 </div>
 @endsection

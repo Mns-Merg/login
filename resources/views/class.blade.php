@@ -1,10 +1,14 @@
-<html>
-    <body>
-       ftikse mia taksi paiktara
+@extends('layouts.admin1')
+
+@section('content')
+      
+
+
+<div class="container">
 
        <div class="row">
         <div class="col-sm-8 offset-sm-2">
-           <h1 class="display-3">Add a class</h1>
+           <h1 class="display-3">Create a  class</h1>
          <div>
            @if ($errors->any())
              <div class="alert alert-danger">
@@ -21,11 +25,11 @@
                      <label for="class">Class:</label>
                      <input type="text" class="form-control" name="class"/>
                  </div>
-                 <button type="submit" class="btn btn-primary">Add class</button>
+                 <button type="submit" class="btn btn-primary">Create</button>
              </form>
          </div>
        </div>
        </div>
 
-    </body>
-</html>
+ </div>
+ @endsection

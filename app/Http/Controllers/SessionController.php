@@ -16,12 +16,12 @@ class SessionController extends Controller
      }
      public function storeSessionData(Request $request) {
         $request->session()->put('class',$request->get('class'));
-        return redirect('/admin');
+        return redirect('/admin')->with('success', 'Created a class');
      }
 
      public function storeSessionData2(Request $request) {
       $request->session()->put('class',$request->get('class'));
-      return redirect('/home');
+      return redirect('/home')->with('success', 'Joined a class');
    }
      public function deleteSessionData(Request $request) {
         $request->session()->forget('my_name');

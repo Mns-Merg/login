@@ -17,7 +17,9 @@ class VoteController extends Controller
 
         $quiz = Rtquiz::where('class', $class)->get()->first();
 
-        
+        if(!$quiz){
+            return redirect('/home')->with('danger', 'No Quiz available');
+        }
 
         return view ('vote', compact('quiz'));
     }
@@ -29,7 +31,10 @@ class VoteController extends Controller
         $class1= session()->get('class');
 
         $quiz1 = Rtquiz::where('class', $class1)->get()->first();
-
+        
+        if (!$quiz1){
+            return redirect('/home')->with('danger', 'Voting has ended');
+        }
 
 
         $vote = new Vote ([
