@@ -22,7 +22,7 @@
             </div>
             <div class="text-center">
                 <label for="last_name">A</label>
-                <input type="radio"  name="answer" value="a"/></br>
+                <input type="radio"  name="answer" value="a" required/></br>
                 <label for="last_name">B</label>
                 <input type="radio"  name="answer" value="b"/></br>
                 <label for="last_name">C</label>

@@ -27,19 +27,19 @@
             </div>
             <div class="form-group">
                 <label for="last_name">Answer A:</label>
-                <input type="text" class="form-control" name="answer_A" value={{ $quiz->answer_A }} readonly/>
+                <input type="text" class="form-control" name="answer_A" value='{{ $quiz->answer_A }}' readonly/>
             </div>
             <div class="form-group">
                 <label for="email">Answer B:</label>
-                <input type="text" class="form-control" name="answer_B" value={{ $quiz->answer_B }} readonly/>
+                <input type="text" class="form-control" name="answer_B" value='{{ $quiz->answer_B }}' readonly/>
             </div>
             <div class="form-group">
                 <label for="city">Answer C:</label>
-                <input type="text" class="form-control" name="answer_C" value={{ $quiz->answer_C }} readonly/>
+                <input type="text" class="form-control" name="answer_C" value='{{ $quiz->answer_C }}' readonly/>
             </div>
             <div class="form-group">
                 <label for="country">Answer D:</label>
-                <input type="text" class="form-control" name="answer_D" value={{ $quiz->answer_D }} readonly/>
+                <input type="text" class="form-control" name="answer_D" value='{{ $quiz->answer_D }}' readonly/>
             </div>
             
             
