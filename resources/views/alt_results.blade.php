@@ -27,9 +27,9 @@
                     Total Votes for D: {{$votes[3]}}<br>
                     Vote Summary : {{$votes[5]}}<br>
                     Correct Votes : {{$votes[6]}}<br>
-                    <a href="{{ url('alt_quiz/'.$votes[8])}}">@php
+                    @php
                     if ($votes[6]<=$votes[7]){
-                        echo "Answers are below threshold take this alternative quiz";
+                        echo "Results of alt quiz - Answers are below threshold take this alternative quiz";
                     }
                     @endphp</a>
                     <a href="/quizs">Manage Quizs</a><br>

@@ -54,7 +54,11 @@ Route::get('/vote_send', 'VoteController@vote_send');
 
 Route::get('rt_quiz/{id}','QuizController@rt_quiz')->middleware('role:1');
 
+Route::get('alt_quiz/{question}','QuizController@alt_quiz')->middleware('role:1');
+
 Route::get('rt_quiz_destroy', 'QuizController@rt_quiz_destroy')->middleware('role:1');
+
+Route::get('alt_rt_quiz_destroy', 'QuizController@alt_rt_quiz_destroy')->middleware('role:1');
 
 Route::get('session/get','SessionController@accessSessionData');
 
