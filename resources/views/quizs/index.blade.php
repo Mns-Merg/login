@@ -12,9 +12,14 @@
 <div class="container">
 <div class="row">
 <div class="col-sm-12">
-    <h1 class="display-3">Quizs</h1>    
+    <h1 class="display-3">Quizs</h1>
+    <div class="row">    
     <div>
     <a style="margin: 19px;" href="{{ route('quizs.create')}}" class="btn btn-primary">New Quiz</a>
+    </div>
+    <div>
+    <a style="margin: 19px;" href="/create+" class="btn btn-primary">New Quiz+</a>
+    </div>
     </div>
   <table class="table table-striped">
     <thead>

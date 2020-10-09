@@ -7,7 +7,7 @@
 <div class="container">
 <div class="row">
  <div class="col-sm-8 offset-sm-2">
-    <h1 class="display-3">Add a quiz</h1>
+    <h1 class="display-3">Add a quiz+</h1>
   <div>
     @if ($errors->any())
       <div class="alert alert-danger">
@@ -19,7 +19,7 @@
       </div><br />
     @endif
     
-      <form method="post" action="{{ route('quizs.store') }}">
+      <form method="post" action="/create_quiz+">
           @csrf
           <div class="form-group">    
               <label for="question">Question:</label>
@@ -44,6 +44,30 @@
           <div class="form-group">
               <label for="answer_A">Correct Answer:</label>
               <input type="text" class="form-control" name="correct_answer" required/>
+          </div>
+          <div class="form-group">    
+              <label for="question">Alternative Question:</label>
+              <input type="text" class="form-control" name="alt_question" required/>
+          </div>
+          <div class="form-group">
+              <label for="answer_A">Answer A:</label>
+              <input type="text" class="form-control" name="alt_answer_A" required/>
+          </div>
+          <div class="form-group">
+              <label for="answer_A">Answer B:</label>
+              <input type="text" class="form-control" name="alt_answer_B" required/>
+          </div>
+          <div class="form-group">
+              <label for="answer_A">Answer C:</label>
+              <input type="text" class="form-control" name="alt_answer_C" required/>
+          </div>
+          <div class="form-group">
+              <label for="answer_A">Answer D:</label>
+              <input type="text" class="form-control" name="alt_answer_D" required/>
+          </div>  
+          <div class="form-group">
+              <label for="answer_A">Correct Answer:</label>
+              <input type="text" class="form-control" name="alt_correct_answer" required/>
           </div>
           <button type="submit" class="btn btn-primary">Add quiz</button>
       

@@ -29,7 +29,7 @@
                     Correct Votes : {{$votes[6]}}<br>
                     @php
                     if ($votes[6]<=$votes[7]){
-                        echo "Results of alt quiz - Answers are below threshold take this alternative quiz";
+                        echo "Results of alt quiz";
                     }
                     @endphp</a>
                     <a href="/quizs">Manage Quizs</a><br>

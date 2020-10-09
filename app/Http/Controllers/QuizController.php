@@ -116,6 +116,11 @@ class QuizController extends Controller
         //
         return view ('quizs.create');
     }
+    public function create2()
+    {
+        //
+        return view ('quizs.create+');
+    }
 
     public function rt_quiz($id)
     {
@@ -140,12 +145,12 @@ class QuizController extends Controller
 
         $quiz = Quiz::where('question', $question)->first();
         $rtquiz = new Rtquiz ([
-            'question' => $quiz->question,
-            'answer_A' => $quiz->answer_A,
-            'answer_B' => $quiz->answer_B,
-            'answer_C' => $quiz->answer_C,
-            'answer_D' => $quiz->answer_D,
-            'correct_answer' => $quiz->correct_answer,
+            'question' => $quiz->alt_question,
+            'answer_A' => $quiz->alt_answer_A,
+            'answer_B' => $quiz->alt_answer_B,
+            'answer_C' => $quiz->alt_answer_C,
+            'answer_D' => $quiz->alt_answer_D,
+            'correct_answer' => $quiz->alt_correct_answer,
             'class' => session()->get('class')
             ]);
         $rtquiz->save();
@@ -168,6 +173,27 @@ class QuizController extends Controller
         'answer_C' => $request->get('answer_C'),
         'answer_D' => $request->get('answer_D'),
         'correct_answer' => $request->get('correct_answer')
+        ]);
+        $quiz->save();
+        return redirect('/quizs')->with('success', 'Quiz Added');
+    }
+
+    public function store2(Request $request)
+    {
+        //
+        $quiz = new Quiz ([
+        'question' => $request->get('question'),
+        'answer_A' => $request->get('answer_A'),
+        'answer_B' => $request->get('answer_B'),
+        'answer_C' => $request->get('answer_C'),
+        'answer_D' => $request->get('answer_D'),
+        'correct_answer' => $request->get('correct_answer'),
+        'alt_question' => $request->get('alt_question'),
+        'alt_answer_A' => $request->get('alt_answer_A'),
+        'alt_answer_B' => $request->get('alt_answer_B'),
+        'alt_answer_C' => $request->get('alt_answer_C'),
+        'alt_answer_D' => $request->get('alt_answer_D'),
+        'alt_correct_answer' => $request->get('alt_correct_answer')
         ]);
         $quiz->save();
         return redirect('/quizs')->with('success', 'Quiz Added');

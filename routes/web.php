@@ -31,7 +31,9 @@ Route::get('/create_quiz', function () {
     return view('create_quiz')->middleware('role:1');
 });
 
+Route::get('/create+', 'QuizController@create2');
 
+Route::post('/create_quiz+', 'QuizController@store2');
 
 Route::resource('quizs', 'QuizController')->middleware('role:1');
 

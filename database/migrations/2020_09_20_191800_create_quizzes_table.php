@@ -21,6 +21,12 @@ class CreateQuizzesTable extends Migration
             $table->string('answer_C');
             $table->string('answer_D');
             $table->string('correct_answer');
+            $table->string('alt_question')->nullable();
+            $table->string('alt_answer_A')->nullable();
+            $table->string('alt_answer_B')->nullable();
+            $table->string('alt_answer_C')->nullable();
+            $table->string('alt_answer_D')->nullable();
+            $table->string('alt_correct_answer')->nullable();
             $table->timestamps();
         });
     }
