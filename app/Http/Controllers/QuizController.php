@@ -25,20 +25,6 @@ class QuizController extends Controller
     public function rt_quiz_destroy()
 
     {
-        // $rtquiz = Rtquiz::where('class', session()->get('class'));
-        
-        
-         
-
-      
-        
-
-
-
-        
-        //  $quizs = Quiz::all();
-        //  return view('quizs.index', compact('quizs'));
-
         $rtquiz = Rtquiz::where('class', session()->get('class'))->first();
         $q = $rtquiz->question;
         $cor_answer = $rtquiz->correct_answer;
@@ -59,28 +45,14 @@ class QuizController extends Controller
             $cor_votes = $votes_d;
         }
         $threshold = 0.5*$sum;
-        $votes = array($votes_a, $votes_b, $votes_c,$votes_d,$cor_answer,$sum,$cor_votes,$threshold,$q);
-        return view('results', compact('votes'));
-        
+        $flag= $rtquiz->quiz_method;
+        $votes = array($votes_a, $votes_b, $votes_c,$votes_d,$cor_answer,$sum,$cor_votes,$threshold,$q,$flag);
+        return view('results', compact('votes'));        
     }
 
     public function alt_rt_quiz_destroy()
 
     {
-        // $rtquiz = Rtquiz::where('class', session()->get('class'));
-        
-        
-         
-
-      
-        
-
-
-
-        
-        //  $quizs = Quiz::all();
-        //  return view('quizs.index', compact('quizs'));
-
         $rtquiz = Rtquiz::where('class', session()->get('class'))->first();
         $q = $rtquiz->question;
         $cor_answer = $rtquiz->correct_answer;
@@ -101,7 +73,8 @@ class QuizController extends Controller
             $cor_votes = $votes_d;
         }
         $threshold = 0.5*$sum;
-        $votes = array($votes_a, $votes_b, $votes_c,$votes_d,$cor_answer,$sum,$cor_votes,$threshold,$q);
+        
+        $votes = array($votes_a, $votes_b, $votes_c,$votes_d,$cor_answer,$sum,$cor_votes,$threshold,$q,);
         return view('alt_results', compact('votes'));
         
     }
@@ -126,6 +99,12 @@ class QuizController extends Controller
     {
         //
         $quiz = Quiz::find($id);
+        if ($quiz->alt_question){
+            $quiz_method = "yes";
+        } else {
+            $quiz_method = "no";
+        }
+
         $rtquiz = new Rtquiz ([
             'question' => $quiz->question,
             'answer_A' => $quiz->answer_A,
@@ -133,7 +112,8 @@ class QuizController extends Controller
             'answer_C' => $quiz->answer_C,
             'answer_D' => $quiz->answer_D,
             'correct_answer' => $quiz->correct_answer,
-            'class' => session()->get('class')
+            'class' => session()->get('class'),
+            'quiz_method' => $quiz_method
             ]);
         $rtquiz->save();
         return view ('quizs.rtview', compact('quiz'));
@@ -142,6 +122,7 @@ class QuizController extends Controller
     public function alt_quiz($question)
     {
         //
+        $quiz_method = "no";
 
         $quiz = Quiz::where('question', $question)->first();
         $rtquiz = new Rtquiz ([
@@ -151,7 +132,8 @@ class QuizController extends Controller
             'answer_C' => $quiz->alt_answer_C,
             'answer_D' => $quiz->alt_answer_D,
             'correct_answer' => $quiz->alt_correct_answer,
-            'class' => session()->get('class')
+            'class' => session()->get('class'),
+            'quiz_method' => $quiz_method
             ]);
         $rtquiz->save();
         return view ('quizs.alt_rtview', compact('quiz'));
@@ -239,6 +221,11 @@ class QuizController extends Controller
         $quiz->answer_B = $request->get('answer_B');
         $quiz->answer_C = $request->get('answer_C');
         $quiz->answer_D = $request->get('answer_D');
+        $quiz->alt_question = $request->get('alt_question');
+        $quiz->alt_answer_A = $request->get('alt_answer_A');
+        $quiz->alt_answer_B = $request->get('alt_answer_B');
+        $quiz->alt_answer_C = $request->get('alt_answer_C');
+        $quiz->alt_answer_D = $request->get('alt_answer_D');
         $quiz->save();
 
         return redirect('/quizs')->with('success', 'Quiz updated!');

@@ -46,11 +46,6 @@ class VoteController extends Controller
             ]);
             $vote->save();
             return redirect('/home')->with('success', 'Vote Submitted');
-
-
-
-
-
     }
 
 

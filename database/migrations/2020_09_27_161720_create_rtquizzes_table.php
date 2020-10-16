@@ -22,7 +22,7 @@ class CreateRtquizzesTable extends Migration
             $table->string('answer_D');
             $table->string('correct_answer');
             $table->string('class');
-            $table->string('vote')->default('yes');
+            $table->string('quiz_method')->nullable;
             $table->timestamps();
         });
     }

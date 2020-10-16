@@ -27,11 +27,7 @@
                     Total Votes for D: {{$votes[3]}}<br>
                     Vote Summary : {{$votes[5]}}<br>
                     Correct Votes : {{$votes[6]}}<br>
-                    @php
-                    if ($votes[6]<=$votes[7]){
-                        echo "Results of alt quiz";
-                    }
-                    @endphp</a>
+                   
                     <a href="/quizs">Manage Quizs</a><br>
 
                     

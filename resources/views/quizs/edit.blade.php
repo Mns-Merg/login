@@ -27,24 +27,52 @@
             </div>
             <div class="form-group">
                 <label for="last_name">Answer A:</label>
-                <input type="text" class="form-control" name="answer_A" value={{ $quiz->answer_A }} />
+                <input type="text" class="form-control" name="answer_A" value='{{ $quiz->answer_A }}' />
             </div>
             <div class="form-group">
                 <label for="email">Answer B:</label>
-                <input type="text" class="form-control" name="answer_B" value={{ $quiz->answer_B }} />
+                <input type="text" class="form-control" name="answer_B" value='{{ $quiz->answer_B }}' />
             </div>
             <div class="form-group">
                 <label for="city">Answer C:</label>
-                <input type="text" class="form-control" name="answer_C" value={{ $quiz->answer_C }} />
+                <input type="text" class="form-control" name="answer_C" value='{{ $quiz->answer_C }}' />
             </div>
             <div class="form-group">
                 <label for="country">Answer D:</label>
-                <input type="text" class="form-control" name="answer_D" value={{ $quiz->answer_D }} />
+                <input type="text" class="form-control" name="answer_D" value='{{ $quiz->answer_D }}' />
             </div>
             <div class="form-group">
                 <label for="country">Correct Answer :</label>
-                <input type="text" class="form-control" name="correct_answer" value={{ $quiz->correct_answer }} />
+                <input type="text" class="form-control" name="correct_answer" value='{{ $quiz->correct_answer }}' />
             </div>
+
+            @if ($quiz->alt_question)
+
+            <div class="form-group">
+                <label for="question">Question:</label>
+                <input type="text" class="form-control" name="alt_question" value= '{{$quiz->alt_question}}' />
+            </div>
+            <div class="form-group">
+                <label for="last_name">Answer A:</label>
+                <input type="text" class="form-control" name="alt_answer_A" value='{{ $quiz->alt_answer_A }}' />
+            </div>
+            <div class="form-group">
+                <label for="email">Answer B:</label>
+                <input type="text" class="form-control" name="alt_answer_B" value='{{ $quiz->alt_answer_B }}' />
+            </div>
+            <div class="form-group">
+                <label for="city">Answer C:</label>
+                <input type="text" class="form-control" name="alt_answer_C" value='{{ $quiz->alt_answer_C }}' />
+            </div>
+            <div class="form-group">
+                <label for="country">Answer D:</label>
+                <input type="text" class="form-control" name="alt_answer_D" value='{{ $quiz->alt_answer_D }}' />
+            </div>
+            <div class="form-group">
+                <label for="country">Correct Answer :</label>
+                <input type="text" class="form-control" name="alt_correct_answer" value='{{ $quiz->alt_correct_answer }}' />
+            </div>
+            @endif
             
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
